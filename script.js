@@ -12,6 +12,8 @@ window.addEventListener('load', () =>{
     });
 });
 
+let currentAudio = null;
+
 function setTrackList(data){
     let template = document.getElementById('trackCard');
     let trackListContainer = document.getElementById('trackList');
@@ -24,17 +26,29 @@ function setTrackList(data){
         clone.querySelector('.card-title').textContent = data[i].name;
         clone.querySelector('.card-img-top').src = data[i].album.images[0].url;
         clone.querySelector('.card-img-top').alt = data[i].name;
+        const previewUrl = data[i].preview_url;
+        const audio = new Audio(previewUrl);
         clone.querySelector('.card').addEventListener('click', () => {
-          playTrack(data[i].preview_url);
-      });
+            toggleAudio(audio);
+        });
       trackListContainer.appendChild(clone);
     }
 }
 
-function playTrack(previewUrl) {
-  let audioPlayer = document.getElementById('audioPlayer');
-  audioPlayer.src = previewUrl;
-  audioPlayer.play();
+function toggleAudio(audio) {
+  if (currentAudio && currentAudio !== audio) {
+      currentAudio.pause(); // Mettre en pause l'audio actuel s'il est différent du nouveau
+  }
+  if (currentAudio !== audio) {
+      currentAudio = audio;
+      currentAudio.play(); // Démarrer la lecture de l'audio sélectionné
+  } else {
+      if (currentAudio.paused) {
+          currentAudio.play(); // Reprendre la lecture si en pause
+      } else {
+          currentAudio.pause(); // Mettre en pause si en cours de lecture
+      }
+  }
 }
 
 function createChart(data) {

@@ -6,9 +6,19 @@
     flex-direction: row;
     width: 200px;
     height: 150px;
+    margin: 23px;
+    flex: 0 0 auto;
+    cursor:pointer;
+    transition: transform 0.3s ease;
 }
 
 .card-title{
     text-align: center;
     font-size: 14px;
+}
+
+.card:hover{
+    width: 200px;
+    height: 150px;
+    transform: scale(0.9);
 }

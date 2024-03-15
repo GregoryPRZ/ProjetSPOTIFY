@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-    fetch('dataunform.json')
+    fetch('data.json')
         .then(response => response.json())
         .then(data => {
             const sortedTracks = sortTracksByPopularity(data);
@@ -12,10 +12,9 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('load', () =>{
-    d3.json('dataunform.json').then((data)=> {
+    d3.json('data.json').then((data)=> {
         setTrackList(data);
         createChart(data);
-        createPieChart(data);
     });
 });
 
@@ -33,6 +32,8 @@ function setTrackList(data){
         clone.querySelector('.card-title').textContent = data[i].name;
         clone.querySelector('.card-img-top').src = data[i].album.images[0].url;
         clone.querySelector('.card-img-top').alt = data[i].name;
+        const artists = data[i].artists.map(artist => artist.name).join(', ');
+        clone.querySelector('.card-text').textContent = artists;
         const previewUrl = data[i].preview_url;
         const audio = new Audio(previewUrl);
         clone.querySelector('.card').addEventListener('click', () => {
@@ -45,6 +46,7 @@ function setTrackList(data){
 function toggleAudio(audio, trackName) {
   if (currentAudio && currentAudio !== audio) {
       currentAudio.pause(); 
+      currentAudio.currentTime=0;
   }
   if (currentAudio !== audio) {
       currentAudio = audio;
@@ -56,16 +58,47 @@ function toggleAudio(audio, trackName) {
           showNowPlayingBanner(trackName);
       } else {
           currentAudio.pause();
+          hideNowPlayingBanner();
       }
   }
 }
 
-function showNowPlayingBanner(trackName) {
-  const banner = document.getElementById('nowPlayingBanner');
-  const nowPlayingTrack = document.getElementById('nowPlayingTrack');
-  nowPlayingTrack.textContent = trackName;
-  banner.style.display = 'none';
+function attachCloseButtonEvent() {
+    document.getElementById('closeBannerBtn').addEventListener('click', function() {
+        currentAudio.pause(); 
+        currentAudio.currentTime=0;
+        hideNowPlayingBanner();
+    });
 }
+
+function showNowPlayingBanner(trackName, artists) {
+    const banner = document.getElementById('nowPlayingBanner');
+    const nowPlayingTrack = document.getElementById('nowPlayingTrack');
+    nowPlayingTrack.textContent = trackName;
+    banner.classList.add('visible');
+    attachCloseButtonEvent();
+    const audio = currentAudio;
+    audio.addEventListener('timeupdate', function() {
+        if (audio.currentTime >= audio.duration) {
+            hideNowPlayingBanner();
+        }
+    });
+}
+
+
+
+function hideNowPlayingBanner() {
+    const banner = document.getElementById('nowPlayingBanner');
+    banner.classList.remove('visible');
+}
+
+document.getElementById('closeBannerBtn').addEventListener('click', function() {
+    hideNowPlayingBanner();
+});
+
+document.getElementById('nowPlayingBanner').addEventListener('click', function() {
+    showNowPlayingBanner("Nom de la piste");
+});
 
 function createChart(data) {
   const musicNames = data.map(track => track.name);
@@ -95,7 +128,6 @@ function createChart(data) {
 }
 
 function sortTracksByPopularity(tracks) {
-    // Triez les pistes par popularité (ou tout autre critère pertinent)
     return tracks.sort((a, b) => b.popularity - a.popularity);
 }
 

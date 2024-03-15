@@ -10,7 +10,6 @@
     margin: 23px;
     flex: 0 0 auto;
     cursor:pointer;
-    transition: transform 0.3s ease;
 }
 
 .card-title{
@@ -19,9 +18,7 @@
 }
 
 .card:hover{
-    width: 200px;
-    height: 150px;
-    transform: scale(0.9);
+    opacity:70%;
 }
 
 .now-playing-banner {
@@ -43,11 +40,66 @@
     margin-left: 10px;
 }
 
+.carousel {
+    width: 50%;
+    height: 50%;
+    margin: left;
+}
+
+#closeBannerBtn:hover{
+    opacity:70%;
+}
+
+.now-playing-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    transform: translateY(100%);
+}
+
+.now-playing-banner.visible {
+    transform: translateY(0);
+}
+
+.slide1{
+    animation: slide 1s;
+}
+
+.opacity1{
+    animation: opacity 2s 0ms;
+}
+
+.opacity2{
+    animation: opacity 2s 0ms;
+}
+
+.opacity3{
+    animation: opacity 2s 0ms;
+}
+
+.text1{
+    color:#FF6060
+}
+
 @keyframes opacity{
     from{
         opacity: 0%;
     }
     to{
         opacity: 100%;
+    }
+}
+
+@keyframes slide{
+    from{
+        transform: translateY(-100%);
+    }
+    to{
+        transform: translateY(0);
     }
 }

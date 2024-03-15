@@ -14,7 +14,7 @@
   </head>
   <body>
     <!--Intitulés-->
-    <div class="p-3 mb-2 bg-dark text-white">
+    <div class="p-3 mb-2 bg-dark text-white slide1">
       <h1 class="text-center text-uppercase">Obscure</h1>
       <br/>
       <div class="container text-center">
@@ -34,19 +34,18 @@
     <!--Le texte-->
     <div class="container text-center">
       <div class="row">
-        <div class="col bg-secondary text-white">
+        <div class="col bg-dark text-white opacity1">
           La PHONK est un sous-genre du hip-hop et de la trap inspiré du rap de Memphis des années 1990.
         Elle est principalement présente sur la plateforme SoundCloud et se caractérise par des voix
         de bandes de rap de Memphis et des échantillons de hip-hop du début des années 1990, en les
         combinant avec des élément de jazz et de funk.
         </div>
-        <div class="col bg-dark text-white">
+        <div class="col bg-dark text-white opacity2">
         Ce site consiste à répertorier une sélection de ma playlist PHONK et de donner des statistiques
         à propos de celles-ci à l'aide de graphiques qui présenteront le nombre de musiques par artiste
-        et le classement de ces musiques en fonction de leur popularité, soit dans l'ordre décroissant
-        du nombre d'écoutes.
+        et le classement de ces musiques en fonction de leur popularité.
         </div>
-        <div class="col bg-secondary text-white">
+        <div class="col bg-dark text-white opacity3">
         Ma playlist contient une sélection de musiques dans le style de la PHONK, qui certaines sont des
         sous-genres de la PHONK. On retrouve principalement de la drift phonk, la krushphonk, ou même de la
         phonk brésilienne, qui se distinguent par les intruments et le rythme.
@@ -59,7 +58,7 @@
     <!--La bannière-->
     <div id="trackList" class="d-flex flex-wrap"></div>
     <div id="nowPlayingBanner" class="now-playing-banner">
-        En cours de lecture: <span id="nowPlayingTrack"></span>
+        En cours de lecture: <span id="nowPlayingTrack" class="text1"></span>
         <button id="closeBannerBtn">Close</button>
     </div>
     <!--La playlist-->
@@ -68,23 +67,29 @@
             <img class="card-img-top">
             <div class="card-body d-flex flex-column justify-content-between gap-3 bg-danger">
                 <h5 class="card-title text-white"></h5>
-                <p class="card-text"></p>
+                <p class="card-text text-white"></p>
             </div>
         </div>
     </template>
     <!--Carousel-->
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" id="carouselInner">
+          <!-- Les diapositives seront ajoutées dynamiquement ici -->
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
-      </a>
-  </div>
+        </a>
+      </div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

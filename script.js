@@ -7,7 +7,8 @@ fetch('dataunform.json')
 
 window.addEventListener('load', () =>{
     d3.json('dataunform.json').then((data)=> {
-        setTrackList(data)
+        setTrackList(data);
+        createChart(data);
     });
 });
 
@@ -34,4 +35,31 @@ function playTrack(previewUrl) {
   let audioPlayer = document.getElementById('audioPlayer');
   audioPlayer.src = previewUrl;
   audioPlayer.play();
+}
+
+function createChart(data) {
+  const musicNames = data.map(track => track.name);
+  const popularity = data.map(track => track.popularity);
+
+  const ctx = document.getElementById('popularityChart').getContext('2d');
+  const popularityChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: musicNames,
+          datasets: [{
+              label: 'Popularité',
+              data: popularity,
+              backgroundColor: 'rgba(255, 0, 0, 0.75)',
+              borderColor: 'rgba(255, 0, 0, 1)',
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
 }

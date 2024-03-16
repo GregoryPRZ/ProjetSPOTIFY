@@ -12,38 +12,20 @@
     <script type="text/javascript" src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-  <body>
+  <body class="bg-dark bodyopa">
+    <div class="container bg-dark">
     <!--Intitulés-->
     <div class="p-3 mb-2 bg-dark text-white slide1">
       <h1 class="text-center text-uppercase">Obscure</h1>
-      <br/>
-      <div class="container text-center">
-        <div class="row">
-          <div class="col">
-            Qu'est ce que la PHONK ?
-          </div>
-          <div class="col">
-            En quoi consiste le site ?
-          </div>
-          <div class="col">
-            Que contient cette playlist ?
-          </div>
-        </div>
-      </div>
     </div>
     <!--Le texte-->
     <div class="container text-center">
-      <div class="row">
+      <div class="row rowmargin">
         <div class="col bg-dark text-white opacity1">
           La PHONK est un sous-genre du hip-hop et de la trap inspiré du rap de Memphis des années 1990.
         Elle est principalement présente sur la plateforme SoundCloud et se caractérise par des voix
         de bandes de rap de Memphis et des échantillons de hip-hop du début des années 1990, en les
         combinant avec des élément de jazz et de funk.
-        </div>
-        <div class="col bg-dark text-white opacity2">
-        Ce site consiste à répertorier une sélection de ma playlist PHONK et de donner des statistiques
-        à propos de celles-ci à l'aide de graphiques qui présenteront le nombre de musiques par artiste
-        et le classement de ces musiques en fonction de leur popularité.
         </div>
         <div class="col bg-dark text-white opacity3">
         Ma playlist contient une sélection de musiques dans le style de la PHONK, qui certaines sont des
@@ -51,7 +33,7 @@
         phonk brésilienne, qui se distinguent par les intruments et le rythme.
         </div>
       </div>
-      <canvas id="popularityChart" class="text-white" width="100" height="100"></canvas>
+      <canvas id="popularityChart" class="text-white bg-white graphique" width="100" height="100"></canvas>
     </div>
     <div id="trackList" class="d-flex flex-wrap bg-dark"></div>
     <audio id="audioPlayer" controls style="display: none;"></audio>
@@ -59,7 +41,7 @@
     <div id="trackList" class="d-flex flex-wrap"></div>
     <div id="nowPlayingBanner" class="now-playing-banner">
         En cours de lecture: <span id="nowPlayingTrack" class="text1"></span>
-        <button id="closeBannerBtn">Close</button>
+        <button id="closeBannerBtn" class="btn-close btn-close-white" aria-label="Close"></button>
     </div>
     <!--La playlist-->
     <template id="trackCard">
@@ -72,24 +54,25 @@
         </div>
     </template>
     <!--Carousel-->
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-indicators">
+    <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade bg-dark text-white" data-bs-ride="carousel">
+      <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner" id="carouselInner">
+      </div>
+      <div class="carousel-inner" id="carouselInner">
           <!-- Les diapositives seront ajoutées dynamiquement ici -->
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
+      </div>
+      <a class="carousel-control-prev bg-danger" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
+      </a>
+      <a class="carousel-control-next bg-danger" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
-        </a>
-      </div>
+      </a>
+  </div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -132,25 +132,36 @@ function sortTracksByPopularity(tracks) {
 }
 
 function displayTop3Albums(data) {
-    const top3 = data.slice(0, 3);
     const carouselInner = document.querySelector('.carousel-inner');
 
-    top3.forEach((track, index) => {
-        const imageUrl = track.album.images[0].url;
-        const activeClass = index === 0 ? 'active' : '';
+    for (let index = 0; index < data.length && index < 3; index++) {
+        const track = data[index];
+        const images = track.album.images;
+        const imageUrl = images.length > 0 ? images[0].url : '';
 
         const carouselItem = document.createElement('div');
-        carouselItem.classList.add('carousel-item', activeClass);
+        carouselItem.classList.add('carousel-item');
+        if (index === 0) {
+            carouselItem.classList.add('active');
+        }
 
         const image = document.createElement('img');
         image.src = imageUrl;
         image.classList.add('d-block', 'w-100');
-
         carouselItem.appendChild(image);
-        carouselInner.appendChild(carouselItem);
-    });
 
-    $('.carousel').carousel({
-        interval: 3000
-    });
+        const carouselCaption = document.createElement('div');
+        carouselCaption.classList.add('carousel-caption');
+
+        const trackName = document.createElement('h5');
+        trackName.textContent = track.name;
+        carouselCaption.appendChild(trackName);
+
+        const artistName = document.createElement('p');
+        artistName.textContent = track.artists[0].name;
+        carouselCaption.appendChild(artistName);
+
+        carouselItem.appendChild(carouselCaption);
+        carouselInner.appendChild(carouselItem);
+    }
 }

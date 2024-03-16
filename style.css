@@ -40,17 +40,17 @@
     padding: 10px;
     text-align: center;
     z-index:9999;
+    font-weight:bold;
 }
 
 #closeBannerBtn {
     border: none;
     cursor: pointer;
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 .carousel {
-    width:100%;
-    height:100%;
+    margin:auto;
 }
 
 #closeBannerBtn:hover{
@@ -94,7 +94,12 @@
 }
 
 .text1{
-    color:#FF6060
+    color:#FF6060;
+    font-weight:bold;
+}
+
+.text2{
+    margin-bottom:50px;
 }
 
 @keyframes opacity{

@@ -38,6 +38,14 @@ window.addEventListener("scroll", function() {
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 }, false);
 
+function closeNavbar() {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    if (navbarCollapse.classList.contains('show')) {
+        navbarToggler.click();
+    }
+}
+
 let currentAudio = null;
 
 function setTrackList(data){

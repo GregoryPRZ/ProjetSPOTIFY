@@ -14,27 +14,25 @@
   </head>
   <body class="bg-dark bodyopa">
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
-      <div class="container">
+      <div class="container-md">
           <a class="navbar-brand" href="#">DARKLIST</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="closeNavbar()">
               <span class="navbar-toggler-icon"></span>
           </button>
-          <!-- Liens de navigation -->
           <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                      <a class="nav-link" href="#section1">Présentation</a>
+                  <li class="nav-item bg-danger p-3 text-white">
+                      <a class="nav-link" href="#section1" onclick="closeNavbar()">Présentation</a>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#section2">Graphiques</a>
+                  <li class="nav-item bg-danger p-3">
+                      <a class="nav-link" href="#section2" onclick="closeNavbar()">Graphiques</a>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#trackList">Musiques</a>
+                  <li class="nav-item bg-danger p-3">
+                      <a class="nav-link" href="#trackList" onclick="closeNavbar()">Musiques</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#carouselExampleSlidesOnly">Top 3</a>
+                  <li class="nav-item bg-danger p-3">
+                    <a class="nav-link" href="#carouselExampleSlidesOnly" onclick="closeNavbar()">Top 3</a>
                 </li>
-                  <!-- Ajoutez plus de liens pour les autres sections -->
               </ul>
           </div>
       </div>

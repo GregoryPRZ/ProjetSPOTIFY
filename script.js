@@ -34,12 +34,28 @@ function setTrackList(data){
         clone.querySelector('.card-img-top').alt = data[i].name;
         const artists = data[i].artists.map(artist => artist.name).join(', ');
         clone.querySelector('.card-text').textContent = artists;
+        const spotifyLink = data[i].external_urls.spotify;
+        clone.querySelector('.btn').setAttribute('href', spotifyLink);
         const previewUrl = data[i].preview_url;
         const audio = new Audio(previewUrl);
         clone.querySelector('.card').addEventListener('click', () => {
             toggleAudio(audio, data[i].name);
         });
       trackListContainer.appendChild(clone);
+    }
+}
+
+let selectedCard = null;
+
+function toggleHover(card) {
+    if (selectedCard !== card) {
+        // Si une autre carte est déjà sélectionnée, la réinitialiser
+        if (selectedCard !== null) {
+            selectedCard.classList.remove('hover');
+        }
+        // Sélectionner la carte actuelle
+        selectedCard = card;
+        card.classList.add('hover');
     }
 }
 
@@ -58,7 +74,6 @@ function toggleAudio(audio, trackName) {
           showNowPlayingBanner(trackName);
       } else {
           currentAudio.pause();
-          hideNowPlayingBanner();
       }
   }
 }
@@ -68,6 +83,7 @@ function attachCloseButtonEvent() {
         currentAudio.pause(); 
         currentAudio.currentTime=0;
         hideNowPlayingBanner();
+        selectedCard.classList.remove('hover');
     });
 }
 
@@ -154,7 +170,7 @@ function displayTop3Albums(data) {
         carouselCaption.classList.add('carousel-caption');
 
         const trackName = document.createElement('h5');
-        trackName.textContent = track.name;
+        trackName.textContent = index+1 + "." + " " + track.name;
         carouselCaption.appendChild(trackName);
 
         const artistName = document.createElement('p');

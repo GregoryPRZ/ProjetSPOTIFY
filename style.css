@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: row;
     width: 200px;
-    height: 150px;
+    height: 200px;
     margin: auto;
     margin-bottom:100px;
     flex: 0 0 auto;
@@ -25,10 +25,19 @@
 .card-title{
     text-align: center;
     font-size: 14px;
+    font-weight:bold;
 }
 
-.card:hover{
+.card.hover, .card:hover{
     opacity:70%;
+}
+
+.card-link{
+    z-index:9999;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover, .card.hover, .card:hover{
+    border:solid white;
 }
 
 .now-playing-banner {
@@ -51,6 +60,7 @@
 
 .carousel {
     margin:auto;
+    margin-bottom:50px;
 }
 
 #closeBannerBtn:hover{

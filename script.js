@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-    fetch('data.json')
+    fetch('./data.json')
         .then(response => response.json())
         .then(data => {
             const sortedTracks = sortTracksByPopularity(data);
@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('load', () =>{
-    d3.json('data.json').then((data)=> {
+    d3.json('./data.json').then((data)=> {
         setTrackList(data);
         createChart(data);
     });
@@ -37,6 +37,10 @@ function setTrackList(data){
         clone.querySelector('.card-text').textContent = artists;
         const spotifyLink = data[i].external_urls.spotify;
         clone.querySelector('.btn').setAttribute('href', spotifyLink);
+        const followersTotal = data[i].artists[0].followers.total;
+        clone.querySelector('.followers').textContent = `Followers : ${followersTotal}`;
+        const popularity = data[i].popularity;
+        clone.querySelector('.blockquote-footer').textContent = `Popularité : ${popularity}`;
         const previewUrl = data[i].preview_url;
         const audio = new Audio(previewUrl);
         clone.querySelector('.card').addEventListener('click', () => {

@@ -33,10 +33,20 @@
         phonk brésilienne, qui se distinguent par les intruments et le rythme.
         </div>
       </div>
-      <div class="text-white text2 text-center">
-        <h3>Graphique du niveau de popularité de chaque musique</h5>
-      </div>
-      <canvas id="popularityChart" class="text-white bg-white graphique" width="50" height="50"></canvas>
+      <div class="row">
+        <div class="col-md-6">
+            <div class="text-white text2 text-center">
+                <h3>Niveau de popularité de chaque musique</h3>
+            </div>
+            <canvas id="popularityChart" class="text-white bg-white graphique" width="400" height="400"></canvas>
+        </div>
+        <div class="col-md-6">
+            <div class="text-white text2 text-center">
+                <h3>Répartition des musiques par artiste</h3>
+            </div>
+            <canvas id="pieChart" class="text-white bg-white graphique" width="400" height="400"></canvas>
+        </div>
+    </div>
     </div>
     <div id="trackList" class="d-flex flex-wrap bg-dark"></div>
     <audio id="audioPlayer" controls style="display: none"></audio>

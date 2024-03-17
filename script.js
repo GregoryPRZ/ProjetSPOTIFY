@@ -5,6 +5,7 @@ window.addEventListener('load', () => {
             const sortedTracks = sortTracksByPopularity(data);
             const top3Tracks = sortedTracks.slice(0, 3);
             displayTop3Albums(top3Tracks);
+            createPieChart(data);
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -49,11 +50,9 @@ let selectedCard = null;
 
 function toggleHover(card) {
     if (selectedCard !== card) {
-        // Si une autre carte est déjà sélectionnée, la réinitialiser
         if (selectedCard !== null) {
             selectedCard.classList.remove('hover');
         }
-        // Sélectionner la carte actuelle
         selectedCard = card;
         card.classList.add('hover');
     }
@@ -180,4 +179,64 @@ function displayTop3Albums(data) {
         carouselItem.appendChild(carouselCaption);
         carouselInner.appendChild(carouselItem);
     }
+}
+
+function createPieChart(data) {
+    const artistCounts = {};
+    const artistColors = {};
+
+    data.forEach(track => {
+        track.artists.forEach(artist => {
+            if (artist.name in artistCounts) {
+                artistCounts[artist.name]++;
+            } else {
+                artistCounts[artist.name] = 1;
+                const color = getRandomColor();
+                artistColors[artist.name] = color;
+            }
+        });
+    });
+
+    const labels = Object.keys(artistCounts);
+    const dataValues = Object.values(artistCounts);
+    const backgroundColors = labels.map(label => artistColors[label]);
+
+    const pieData = {
+        labels: labels,
+        datasets: [{
+            data: dataValues,
+            backgroundColor: backgroundColors,
+            borderColor: 'white',
+            borderWidth: 1
+        }]
+    };
+
+    const pieConfig = {
+        type: 'pie',
+        data: pieData,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Répartition des musiques par artiste'
+                }
+            }
+        }
+    };
+
+    const ctx = document.getElementById('pieChart').getContext('2d');
+    const pieChart = new Chart(ctx, pieConfig);
+}
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }

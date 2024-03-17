@@ -1,3 +1,16 @@
+.navbar {
+    transition: top 0.3s;
+    position: fixed;
+    width: 100%;
+    height:70px;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar.hidden {
+    top: -100px;
+}
+
 .graphique{
     margin-bottom:100px;
 }
@@ -20,6 +33,7 @@
     margin-bottom:100px;
     flex: 0 0 auto;
     cursor:pointer;
+    
 }
 
 .card-title{
@@ -28,19 +42,19 @@
     font-weight:bold;
 }
 
-.card.hover, .card:hover{
+.card.hover, .card:hover, .nav-item:hover{
     opacity:70%;
 }
 
 .card-link{
-    z-index:9999;
+    z-index:999;
 }
 
 .followers, .blockquote-footer{
     font-size:14px;
 }
 
-.carousel-control-prev:hover, .carousel-control-next:hover, .card.hover, .card:hover{
+.carousel-control-prev:hover, .carousel-control-next:hover, .card.hover, .card:hover, .nav-item:hover{
     border:solid white;
 }
 

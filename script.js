@@ -19,6 +19,25 @@ window.addEventListener('load', () =>{
     });
 });
 
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        document.getElementById("navbar").classList.remove("hidden");
+    } else {
+        document.getElementById("navbar").classList.add("hidden");
+    }
+
+    if (currentScroll === 0) {
+        document.getElementById("navbar").classList.add("hidden");
+    } else {
+        document.getElementById("navbar").classList.remove("hidden");
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+}, false);
+
 let currentAudio = null;
 
 function setTrackList(data){

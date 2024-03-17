@@ -13,13 +13,39 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body class="bg-dark bodyopa">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+      <div class="container">
+          <a class="navbar-brand" href="#">DARKLIST</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Liens de navigation -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="#section1">Présentation</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#section2">Graphiques</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#trackList">Musiques</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#carouselExampleSlidesOnly">Top 3</a>
+                </li>
+                  <!-- Ajoutez plus de liens pour les autres sections -->
+              </ul>
+          </div>
+      </div>
+  </nav>
     <div class="container bg-dark">
     <!--Intitulés-->
     <div class="p-3 mb-2 bg-danger text-white slide1">
       <h1 class="text-center text-uppercase">La Darklist</h1>
     </div>
     <!--Le texte-->
-    <div class="container text-center">
+    <div id="section1" class="container text-center">
       <div class="row rowmargin">
         <div class="col bg-dark text-white opacity1">
           La PHONK est un sous-genre du hip-hop et de la trap inspiré du rap de Memphis des années 1990.
@@ -33,7 +59,7 @@
         phonk brésilienne, qui se distinguent par les intruments et le rythme.
         </div>
       </div>
-      <div class="row">
+      <div id="section2" class="row">
         <div class="col-md-6">
             <div class="text-white text2 text-center">
                 <h3>Niveau de popularité de chaque musique</h3>
@@ -46,7 +72,7 @@
             </div>
             <canvas id="pieChart" class="text-white bg-white graphique" width="400" height="400"></canvas>
         </div>
-    </div>
+      </div>
     </div>
     <div id="trackList" class="d-flex flex-wrap bg-dark"></div>
     <audio id="audioPlayer" controls style="display: none"></audio>

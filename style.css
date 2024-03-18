@@ -44,8 +44,6 @@
     transition: text-shadow 0.3s ease;
 }
 
-
-
 .card.hover, .card:hover, .nav-item:hover, .navbar-brand:hover{
     opacity:70%;
 }
@@ -58,9 +56,25 @@
     font-size:14px;
 }
 
-.carousel-control-prev:hover, .carousel-control-next:hover, .card.hover, .card:hover, .nav-item:hover, .navbar-brand:hover{
+.carousel-control-prev:hover, .carousel-control-next:hover, .card.hover, .card:hover, .nav-item:hover{
     border:solid white;
 }
+
+.volume-control {
+    text-align: center;
+    margin-top: 10px;
+}
+  
+.volume-control span {
+    position: relative;
+}
+
+.volume-control .bi {
+    position: absolute;
+    left: -25px;
+    top: 0px;
+    color: white;
+  }
 
 .now-playing-banner {
     position: fixed;
@@ -83,6 +97,11 @@
 .carousel {
     margin:auto;
     margin-bottom:50px;
+}
+
+#carouselExampleSlidesOnly{
+    width:80%;
+    height:80%;
 }
 
 #closeBannerBtn:hover{

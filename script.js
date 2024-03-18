@@ -100,13 +100,17 @@ function toggleAudio(audio, trackName, albumImageUrl) {
       currentAudio.play();
       showNowPlayingBanner(trackName);
       document.body.style.backgroundImage = `url(${albumImageUrl})`;
-      document.body.style.backgroundSize = 'contain';
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundAttachment = 'fixed';
+      document.body.style.backgroundRepeat = 'no-repeat';
   } else {
       if (currentAudio.paused) {
           currentAudio.play();
           showNowPlayingBanner(trackName);
           document.body.style.backgroundImage = `url(${albumImageUrl})`;
-          document.body.style.backgroundSize = 'contain';
+          document.body.style.backgroundSize = 'cover';
+          document.body.style.backgroundAttachment = 'fixed';
+          document.body.style.backgroundRepeat = 'no-repeat';
       } else {
           currentAudio.pause();
       }

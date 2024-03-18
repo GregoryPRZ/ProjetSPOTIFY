@@ -108,7 +108,12 @@
     animation: slide 1s;
 }
 
+.bg-dark{
+    opacity:95%;
+}
+
 .bodyopa{
+    background-color: black; 
     animation: opacity 1s;
 }
 

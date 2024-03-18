@@ -69,9 +69,10 @@ function setTrackList(data){
         const popularity = data[i].popularity;
         clone.querySelector('.blockquote-footer').textContent = `Popularité : ${popularity}`;
         const previewUrl = data[i].preview_url;
+        const albumImageUrl = data[i].album.images[0].url;
         const audio = new Audio(previewUrl);
         clone.querySelector('.card').addEventListener('click', () => {
-            toggleAudio(audio, data[i].name);
+            toggleAudio(audio, data[i].name, albumImageUrl);
         });
       trackListContainer.appendChild(clone);
     }
@@ -89,7 +90,7 @@ function toggleHover(card) {
     }
 }
 
-function toggleAudio(audio, trackName) {
+function toggleAudio(audio, trackName, albumImageUrl) {
   if (currentAudio && currentAudio !== audio) {
       currentAudio.pause(); 
       currentAudio.currentTime=0;
@@ -98,10 +99,14 @@ function toggleAudio(audio, trackName) {
       currentAudio = audio;
       currentAudio.play();
       showNowPlayingBanner(trackName);
+      document.body.style.backgroundImage = `url(${albumImageUrl})`;
+      document.body.style.backgroundSize = 'contain';
   } else {
       if (currentAudio.paused) {
           currentAudio.play();
           showNowPlayingBanner(trackName);
+          document.body.style.backgroundImage = `url(${albumImageUrl})`;
+          document.body.style.backgroundSize = 'contain';
       } else {
           currentAudio.pause();
       }
@@ -114,6 +119,7 @@ function attachCloseButtonEvent() {
         currentAudio.currentTime=0;
         hideNowPlayingBanner();
         selectedCard.classList.remove('hover');
+        document.body.style.backgroundImage = 'none';
     });
 }
 

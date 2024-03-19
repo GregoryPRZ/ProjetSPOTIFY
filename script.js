@@ -99,36 +99,37 @@ function toggleHover(card) {
 }
 
 function toggleAudio(audio, trackName, albumImageUrl) {
-  if (currentAudio && currentAudio !== audio) {
-      currentAudio.pause(); 
-      currentAudio.currentTime=0;
-  }
-  if (currentAudio !== audio) {
-      currentAudio = audio;
-      currentAudio.play();
-      showNowPlayingBanner(trackName);
-      document.body.style.backgroundImage = `url(${albumImageUrl})`;
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundAttachment = 'fixed';
-      document.body.style.backgroundRepeat = 'no-repeat';
-  } else {
-      if (currentAudio.paused) {
-          currentAudio.play();
-          showNowPlayingBanner(trackName);
-          document.body.style.backgroundImage = `url(${albumImageUrl})`;
-          document.body.style.backgroundSize = 'cover';
-          document.body.style.backgroundAttachment = 'fixed';
-          document.body.style.backgroundRepeat = 'no-repeat';
-      } else {
-          currentAudio.pause();
-      }
-  }
+    
+    if (currentAudio && currentAudio !== audio) {
+        currentAudio.pause(); 
+        currentAudio.currentTime=0;
+    }
+    if (currentAudio !== audio) {
+        currentAudio = audio;
+        currentAudio.play();
+        showNowPlayingBanner(trackName);
+        document.body.style.backgroundImage = `url(${albumImageUrl})`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundAttachment = 'fixed';
+        document.body.style.backgroundRepeat = 'no-repeat';
+    } else {
+        if (currentAudio.paused) {
+            currentAudio.play();
+            showNowPlayingBanner(trackName);
+            document.body.style.backgroundImage = `url(${albumImageUrl})`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundAttachment = 'fixed';
+            document.body.style.backgroundRepeat = 'no-repeat';
+        } else {
+            currentAudio.pause();
+        }
+    }
 
   const volumeRange = document.getElementById('volumeRange');
-  currentAudio.volume = volumeRange.value / 100;
+  currentAudio.volume = volumeRange.value / 1000;
   
   volumeRange.addEventListener('input', function() {
-    currentAudio.volume = volumeRange.value / 100;
+    currentAudio.volume = volumeRange.value / 1000;
   });
 }
 
